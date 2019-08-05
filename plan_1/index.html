@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas 繪圖 1</title>
+    <style>
+        html {
+            margin: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        canvas {
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="mycanvas"></canvas>
+
+
+    <script src="js/main.js"></script>
+
+    <script>
+
+        //----------------------------繪製圖形 -----------------------
+
+
+        //將需要的方塊值帶入
+        var ggg = new guiobj({
+            p: new Vec2(130, 130),//第2個方塊起始原點
+            size: new Vec2(200, 200), //大小
+            color: "#fff",
+
+
+        })
+
+        var rect = new guiobj({
+            p: new Vec2(30, 30),//第一個方塊起始原點
+            size: new Vec2(100, 100),
+            color: "red",
+
+        })
+
+
+
+        //------繪出
+
+        rect.draw()
+        ggg.draw()
+
+
+
+
+    </script>
+</body>
+
+</html>
