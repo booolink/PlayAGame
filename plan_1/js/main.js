@@ -107,9 +107,7 @@ class guiobj {
                 if (this.draging === true) {
                     mousepos = mousepos.sub(lastpos) //滑鼠移動 - 點擊 距離
                     lastpos = lastpos.add(mousepos)  //滑鼠點擊 + 距離
-
                     this.p = this.p.add(mousepos)//圖形加上 移動距離
-                    console.log(lastpos, mousepos)
                 }
             } else {
                 this.draging = false
