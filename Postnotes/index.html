@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>便利貼</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- 便利貼 -->
+        <div class="post" v-for="(p,pid) in post" :style="postCss(p)" @mousedown="seletid(pid)">
+            {{p.text}}
+        </div>
+        <!-- 選單 -->
+        <ul>
+            
+          
+            <div class="datalist" v-for="(p,pid) in post">
+                <h3 @mousedown="">{{pid}}</h3>
+                <li><input v-model="p.text" type="text">
+                    <div class="colorlist">
+                        <div class="color" v-for="color in colorlist" :style="{background:color.color}"
+                            @click="p.color=color.name"></div>
+                    </div>
+                </li>
+            </div>
+            <button @click="newblock()">新增</button>
+        </ul>
+    </div>
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js'></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

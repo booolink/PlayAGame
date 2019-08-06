@@ -54,6 +54,10 @@ ctx.line = function (v1, v2) {//直線方法
     this.lineto(v2.x, v2.y)
 }
 
+function update() {//時間
+    time++
+}
+
 function background() {//蓋掉背景 
     ctx.fillStyle = bgcolor
     ctx.fillRect(0, 0, ww, wh)
@@ -78,15 +82,9 @@ class guiobj {
         this.mouseup()
     }
     draw() { //畫出圖形
-        // background()
         ctx.fillStyle = this.color //圖形顏色
-        if (this.Hover === true) {
-            // ctx.fillStyle = "green"
-        }
         ctx.fillRect(this.p.x, this.p.y, this.size.x, this.size.y)
     }
-
-
     mouseHandler() {//滑鼠位置控制
         this.el.addEventListener('mousemove', (e) => {
             mousepos = new Vec2(e.x, e.y)
@@ -103,7 +101,7 @@ class guiobj {
             if (this.drag === true) {
 
                 this.draging = true
-                
+
                 if (this.draging === true) {
                     mousepos = mousepos.sub(lastpos) //滑鼠移動 - 點擊 距離
                     lastpos = lastpos.add(mousepos)  //滑鼠點擊 + 距離
@@ -142,21 +140,53 @@ class guiobj {
         })
 
     }
-
-
 }
 
+//群組
+class Scene {
+    constructor(args) {
+        let def = {
+            children: []
+        }
+        Object.assign(def, args)
+        Object.assign(this, def)
 
+    }
 
+    draw() { //畫出圖形
+        this.children.forEach(obj => {
+            obj.draw()
+        })
+        
+        ctx.fillStyle = this.color //圖形顏色
+        // if (this.Hover === true) {
+        //     ctx.fillStyle = "green"
+        // }
+        ctx.fillRect(this.p.x, this.p.y, this.size.x, this.size.y)
+        scene.draw()
+    }
+    addChild(obj) {
+        if (obj instanceof guiobj) { //檢查obj是guiobj的延伸
+            this.children.push(obj)
+        }
+    }
+}
 
-//畫圖形的方法
+var sence = new Scene()
+function init() {
+    let sss = new guiobj({
+        p: new Vec2(400, 400),//第3個方塊起始原點
+        size: new Vec2(50, 50), //大小
+        color: "bule",
+    })
+    scene.addChild(sss)
+}
+
 function draw() {
     background()
+    scene.draw()
 }
 
-function update() {//時間
-    time++
-}
 
 
 

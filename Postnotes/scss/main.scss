@@ -1,0 +1,91 @@
+$coloryellow: #ffeb67;
+$colorblue: #a5d8d6;
+$colorred: #ef898c;
+$colorgreen: #cbe196;
+$colorblack: #3e3a39;
+
+@mixin size($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "微軟正黑體";
+  font-weight: 500;
+  //   outline: 1px solid red;
+  color: #555;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: $colorblack;
+}
+
+.post {
+  @include size(240px);
+  @include center;
+ 
+  overflow:hidden;
+  background: $coloryellow;
+  letter-spacing: 5px;
+  font-weight: 500;
+  box-shadow: 15px 10px 30px #00000080;
+  position: absolute;
+  cursor: pointer;
+  animation: background-color 0.5s;
+  // white-space:pre-wrap;
+  word-break:break-all;  //强制英文單詞換行 keep-all空格
+  word-wrap:break-word;  //自动換行
+
+}
+ul {
+  @include size(200px, 50px);
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  .datalist {
+    @include center;
+    margin-bottom: 5px;
+
+    > h3 {
+      @include size(20%);
+      @include center;
+      color: #ffffff;
+    }
+    & li {
+      @include size(100%);
+      display: block;
+    }
+    .colorlist {
+      display: flex;
+      .color {
+        @include size(30px);
+        cursor: pointer;
+      }
+    }
+  }
+  > button {
+    @include size(70%);
+    @include center;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 10px;
+    border-radius: 5px;
+    border: none;
+    &:hover{
+        color: #ffffff;
+        background-color: #f1404076;
+    }
+  }
+}

@@ -1,0 +1,122 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "微軟正黑體";
+  font-weight: 500;
+  color: #555;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #3e3a39;
+}
+
+.post {
+  width: 240px;
+  height: 240px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  background: #ffeb67;
+  letter-spacing: 5px;
+  font-weight: 500;
+  -webkit-box-shadow: 15px 10px 30px #00000080;
+          box-shadow: 15px 10px 30px #00000080;
+  position: absolute;
+  cursor: pointer;
+  -webkit-animation: background-color 0.5s;
+          animation: background-color 0.5s;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+ul {
+  width: 200px;
+  height: 50px;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}
+
+ul .datalist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 5px;
+}
+
+ul .datalist > h3 {
+  width: 20%;
+  height: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #ffffff;
+}
+
+ul .datalist li {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+ul .datalist .colorlist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+ul .datalist .colorlist .color {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+ul > button {
+  width: 70%;
+  height: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+ul > button:hover {
+  color: #ffffff;
+  background-color: #f1404076;
+}
