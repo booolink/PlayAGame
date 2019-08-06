@@ -72,7 +72,6 @@ let vm = new Vue({
                 //物件起始點 = 滑鼠在頁面的位置 - 滑鼠相對物件位置
                 sub.x = this.mousepos.x - this.starpos.x
                 sub.y = this.mousepos.y - this.starpos.y
-                console.log(this.starpos.y, sub.x)
             }
 
         }
