@@ -1,0 +1,50 @@
+$colorred: #f071a5;
+$colorblack: #39dfde;
+
+@mixin size($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  // outline: 1px solid;
+}
+
+html,
+body {
+  @include size(100%);
+  background: #03152c;
+  overflow: hidden;
+}
+
+#app {
+  .card {
+    @include size(100px, 150px);
+    position: absolute;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px #f18a8a80;
+ 
+    p {
+      @include size(35px);
+      font-size: .8em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "微軟正黑體";
+      color: #fff;
+      font-weight: 900;
+    }
+  }
+      .suits {
+        @include size(100%, 70%);
+        position: absolute;
+        background:url();
+        background-size: contain;
+        top: 35px;
+        left: 0px;
+
+      }
+}

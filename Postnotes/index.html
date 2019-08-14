@@ -18,9 +18,9 @@
         <!-- 選單 -->
         <ul>
             
-          
+            <h3>{{nowID}}</h3>
             <div class="datalist" v-for="(p,pid) in post">
-                <h3 @mousedown="">{{pid}}</h3>
+                <h3>{{pid}}</h3>
                 <li><input v-model="p.text" type="text">
                     <div class="colorlist">
                         <div class="color" v-for="color in colorlist" :style="{background:color.color}"

@@ -41,7 +41,6 @@ let vm = new Vue({
         }
     },//--data
     methods: {
-
         postCss(p) {//便利貼CSS屬性
             return {
                 left: p.pos.x + "px",
@@ -60,7 +59,6 @@ let vm = new Vue({
                 }
             )
         },
-
         seletid(id) {//獲取便利貼
             return this.nowID = id
         },
@@ -85,7 +83,6 @@ window.addEventListener("mousemove", (e) => {
 })
 //取得滑鼠相對物件的位置
 window.addEventListener("mousedown", (e) => {
-
     vm.starpos = { x: e.offsetX, y: e.offsetY }
 })
 window.addEventListener("mouseup", () => {

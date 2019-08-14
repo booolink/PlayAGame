@@ -34,7 +34,6 @@ body {
 .post {
   @include size(240px);
   @include center;
- 
   overflow:hidden;
   background: $coloryellow;
   letter-spacing: 5px;

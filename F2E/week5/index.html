@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 3</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+        var config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 300 },
+                    debug: true
+                }
+            },
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
+
+        var game = new Phaser.Game(config);
+        var platforms //群組背景可用
+
+
+        function preload() {//資源引入
+            this.load.image('sky', 'assets/sky.png');
+            this.load.image('ground', 'assets/platform.png');
+            this.load.image('star', 'assets/star.png');
+            this.load.image('bomb', 'assets/bomb.png');
+            this.load.spritesheet('player', 'assets/player.png', { frameWidth: 217, frameHeight: 178 });
+
+        }
+
+        function create() {
+            //背景
+            sky = this.add.tileSprite(400, 300, 800, 600, 'sky');
+            ground = this.add.tileSprite(400, 574, 800, 50, 'ground');
+            //地板加入作用力項目--
+            this.physics.add.existing(ground);
+            ground.body.immovable = true;
+            ground.body.moves = false;
+            //地圖障礙--
+            platforms = this.physics.add.staticGroup();
+            platforms.create(600, 400, 'ground');
+            platforms.create(50, 250, 'ground');
+            platforms.create(750, 220, 'ground');
+
+
+            //玩家設定
+            player = this.physics.add.sprite(100, 380,"player") ;
+            player.body.setSize(152, 110); //物件實際邊界
+            player.body.offset.x=10;
+            player.body.offset.y=63;
+            // player.anims.play('stop_r', true); //持續動作
+            player.setBounce(0.2);//反彈係數
+            player.setCollideWorldBounds(true);//物理邊界
+            key = this.input.keyboard.createCursorKeys();//  取得鍵盤事件
+            //停止動畫
+            this.anims.create({
+                key: 'stop',
+                // frames: [{ key: 'player', frame: 0 }],
+                frames: this.anims.generateFrameNumbers('player', { start: 0, end: 2 }),
+                frameRate: 4,
+                repeat: -1,
+            });
+            // 行走動畫
+            this.anims.create({
+                key: 'right',
+                frames: this.anims.generateFrameNumbers('player', { start: 3, end: 9 }),
+                frameRate: 10,
+                repeat: -1,
+            });
+            // 功擊動畫
+            this.anims.create({
+                key: 'att1',
+                frames: this.anims.generateFrameNumbers('player', { start: 11, end: 18 }),
+                frameRate: 10,
+                repeat: -1,
+            });
+
+            //作用力對像
+            this.physics.add.collider(player, ground);
+            this.physics.add.collider(player, platforms);
+        }
+
+        function update() {
+
+            //玩家操作行為
+            if (key.right.isDown) {
+                player.setVelocityX(160);
+                player.anims.play('right', true);
+                player.flipX = false;
+
+            }
+            else
+                if (key.left.isDown) {
+                    player.setVelocityX(-160);
+                    player.anims.play('right', true);
+                    player.flipX = true;
+                }
+                else if (key.space.isDown) {
+                    player.anims.play('att1', true);
+                    player.setVelocityX(0);
+                }
+               else if (key.up.isDown && player.body.touching.down) {
+                    player.setVelocityY(-360);
+                }
+                else {
+                    player.anims.play('stop', true);
+                    player.setVelocityX(0);
+                }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
